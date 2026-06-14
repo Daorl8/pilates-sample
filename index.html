@@ -131,9 +131,13 @@
     #intro {
       padding: 120px 60px;
       display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
-      align-items: start; max-width: 1200px; margin: 0 auto;
+      align-items: stretch; max-width: 1200px; margin: 0 auto;
     }
+    .intro-aside { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
     .intro-label { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); padding-top: 8px; }
+    .intro-aside-foot { display: flex; flex-direction: column; gap: 16px; }
+    .intro-aside-rule { width: 40px; height: 1px; background: var(--green); opacity: 0.5; }
+    .intro-aside-note { font-size: 0.9rem; color: var(--sub); line-height: 1.9; letter-spacing: 0.02em; }
     .intro-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 300; line-height: 1.15; margin-bottom: 28px;
@@ -278,6 +282,7 @@
       .nav-hamburger { display: flex; }
       .nav-drawer { display: flex; }
       #intro { grid-template-columns: 1fr; gap: 20px; padding: 80px 28px; }
+      .intro-aside { gap: 18px; }
       .intro-label { padding-top: 0; }
       #program { padding: 72px 28px; }
       .program-grid { grid-template-columns: 1fr; background: none; gap: 2px; }
@@ -351,7 +356,13 @@
 
   <!-- INTRO -->
   <section id="intro">
-    <div class="intro-label">Philosophy</div>
+    <aside class="intro-aside">
+      <div class="intro-label">Philosophy</div>
+      <div class="intro-aside-foot">
+        <div class="intro-aside-rule"></div>
+        <p class="intro-aside-note">호흡 · 정렬 · 균형<br>몸의 기본을 다시 세우는 시간</p>
+      </div>
+    </aside>
     <div class="intro-text">
       <h2 class="intro-title">움직임은<br><em>삶의 언어입니다</em></h2>
       <p class="intro-body">
@@ -574,7 +585,7 @@
       document.getElementById('hamburger').classList.remove('open');
       document.getElementById('drawer').classList.remove('open');
     }
-    const fadeEls = document.querySelectorAll('.intro-text, .program-card, .about-img, .about-text, .gallery-item, .contact-left, .contact-map');
+    const fadeEls = document.querySelectorAll('.intro-aside, .intro-text, .program-card, .about-img, .about-text, .gallery-item, .contact-left, .contact-map');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
