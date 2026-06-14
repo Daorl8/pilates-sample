@@ -133,9 +133,13 @@
       display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
       align-items: stretch; max-width: 1200px; margin: 0 auto;
     }
-    .intro-aside { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
-    .intro-label { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); padding-top: 8px; }
-    .intro-aside-foot { display: flex; flex-direction: column; gap: 16px; }
+    .intro-aside { display: flex; flex-direction: column; justify-content: space-between; gap: 36px; padding-top: 8px; }
+    .intro-label { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); }
+    .intro-pillars { list-style: none; display: flex; flex-direction: column; gap: 28px; }
+    .intro-pillars li { display: flex; align-items: baseline; gap: 16px; }
+    .pillar-ko { font-size: 1.85rem; font-weight: 300; color: var(--dark); line-height: 1; }
+    .pillar-en { font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sub); }
+    .intro-aside-foot { display: flex; flex-direction: column; gap: 14px; }
     .intro-aside-rule { width: 40px; height: 1px; background: var(--green); opacity: 0.5; }
     .intro-aside-note { font-size: 0.9rem; color: var(--sub); line-height: 1.9; letter-spacing: 0.02em; }
     .intro-title {
@@ -358,16 +362,22 @@
   <section id="intro">
     <aside class="intro-aside">
       <div class="intro-label">Philosophy</div>
+      <ul class="intro-pillars">
+        <li><span class="pillar-ko">호흡</span><span class="pillar-en">Breath</span></li>
+        <li><span class="pillar-ko">정렬</span><span class="pillar-en">Alignment</span></li>
+        <li><span class="pillar-ko">균형</span><span class="pillar-en">Balance</span></li>
+      </ul>
       <div class="intro-aside-foot">
         <div class="intro-aside-rule"></div>
-        <p class="intro-aside-note">호흡 · 정렬 · 균형<br>몸의 기본을 다시 세우는 시간</p>
+        <p class="intro-aside-note">몸의 기본을<br>다시 세우는 시간</p>
       </div>
     </aside>
     <div class="intro-text">
       <h2 class="intro-title">움직임은<br><em>삶의 언어입니다</em></h2>
       <p class="intro-body">
-        스튜디오 베르뒤르는 단순한 운동 공간이 아닙니다.<br>
-        올바른 움직임을 통해 몸의 언어를 이해하고, 일상의 자세와 호흡까지 변화시키는 경험을 드립니다.<br><br>
+        스튜디오 베르뒤르는 단순한 운동 공간이 아닙니다.<br><br>
+        올바른 움직임을 통해 몸의 언어를 이해하고,<br>
+        일상의 자세와 호흡까지 변화시키는 경험을 드립니다.<br>
         소수 정예 수업으로 강사와의 깊은 소통을 통해 각자의 몸에 맞는 방식으로 접근합니다.
       </p>
     </div>
@@ -381,19 +391,19 @@
       <div class="program-card">
         <div class="program-num">01</div>
         <div class="program-name">개인 레슨</div>
-        <p class="program-desc">강사와 1:1로 진행하는 맞춤형 수업. 체형 분석부터 목표 설정까지 세밀하게 케어합니다.</p>
+        <p class="program-desc">강사와 1:1로 진행하는 맞춤형 수업.<br>체형 분석부터 목표 설정까지 세밀하게 케어합니다.</p>
         <div class="program-price">60분 · 80,000원~</div>
       </div>
       <div class="program-card">
         <div class="program-num">02</div>
         <div class="program-name">그룹 레슨</div>
-        <p class="program-desc">최대 4인 소규모 그룹 수업. 서로의 동기부여와 함께 꾸준한 운동 습관을 만들어갑니다.</p>
+        <p class="program-desc">최대 4인 소규모 그룹 수업.<br>서로의 동기부여와 함께 꾸준한 운동 습관을 만들어갑니다.</p>
         <div class="program-price">60분 · 45,000원~</div>
       </div>
       <div class="program-card">
         <div class="program-num">03</div>
         <div class="program-name">체험 레슨</div>
-        <p class="program-desc">처음 필라테스를 접하시는 분을 위한 입문 수업. 기초 동작과 호흡법을 익힙니다.</p>
+        <p class="program-desc">처음 필라테스를 접하시는 분을 위한 입문 수업.<br>기초 동작과 호흡법을 익힙니다.</p>
         <div class="program-price">60분 · 30,000원</div>
       </div>
     </div>
