@@ -48,19 +48,24 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.1rem; font-weight: 300;
       letter-spacing: 0.22em; text-transform: uppercase;
+      color: #fff; transition: color 0.35s;
     }
     .nav-links { display: flex; gap: 40px; align-items: center; list-style: none; }
     .nav-links a {
       font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-      opacity: 0.55; transition: opacity 0.2s;
+      color: #fff; opacity: 0.85; transition: color 0.35s, opacity 0.2s;
     }
     .nav-links a:hover { opacity: 1; }
     .nav-cta {
       font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
-      padding: 10px 24px; border: 1px solid var(--green); color: var(--green);
-      transition: background 0.25s, color 0.25s;
+      padding: 10px 24px; border: 1px solid rgba(255,255,255,0.55); color: #fff;
+      transition: background 0.25s, color 0.25s, border-color 0.35s;
     }
-    .nav-cta:hover { background: var(--green); color: #fff; }
+    .nav-cta:hover { background: #fff; color: var(--dark); border-color: #fff; }
+    nav.scrolled .nav-logo { color: var(--dark); }
+    nav.scrolled .nav-links a { color: var(--dark); opacity: 0.6; }
+    nav.scrolled .nav-cta { border-color: var(--green); color: var(--green); }
+    nav.scrolled .nav-cta:hover { background: var(--green); color: #fff; border-color: var(--green); }
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .nav-hamburger span { display: block; width: 22px; height: 1px; background: var(--dark); transition: transform 0.3s, opacity 0.3s; }
     .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -85,9 +90,13 @@
     }
     .hero-bg { position: absolute; inset: 0; }
     .hero-bg img { filter: brightness(0.52); }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 32%);
+    }
     .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 40px; }
     .hero-eyebrow {
-      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase;
       color: rgba(255,255,255,0.45); margin-bottom: 28px;
     }
     .hero-title {
@@ -106,7 +115,7 @@
       position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2;
     }
-    .hero-scroll span { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    .hero-scroll span { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
     .hero-scroll-line {
       width: 1px; height: 40px; background: rgba(255,255,255,0.2);
       animation: scrollAnim 1.8s ease-in-out infinite;
@@ -124,7 +133,7 @@
       display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
       align-items: start; max-width: 1200px; margin: 0 auto;
     }
-    .intro-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); padding-top: 8px; }
+    .intro-label { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); padding-top: 8px; }
     .intro-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 300; line-height: 1.15; margin-bottom: 28px;
@@ -134,7 +143,7 @@
 
     /* PROGRAM */
     #program { background: var(--dark); padding: 100px 60px; }
-    .section-eyebrow { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); }
+    .section-eyebrow { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green); }
     .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; }
     #program .section-eyebrow { margin-bottom: 12px; }
     #program .section-title { color: #fff; margin-bottom: 60px; }
@@ -163,7 +172,7 @@
     .about-body { font-size: 0.88rem; color: var(--sub); line-height: 2; }
     .about-career { margin-top: 36px; display: flex; flex-direction: column; gap: 12px; }
     .career-item { display: flex; gap: 20px; align-items: baseline; }
-    .career-year { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--green); min-width: 44px; }
+    .career-year { font-size: 0.78rem; letter-spacing: 0.1em; color: var(--green); min-width: 44px; }
     .career-desc { font-size: 0.82rem; color: var(--sub); }
 
     /* SCHEDULE */
@@ -172,15 +181,15 @@
     #schedule .section-title { margin-bottom: 52px; }
     .schedule-table { width: 100%; border-collapse: collapse; }
     .schedule-table th {
-      font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--sub); font-weight: 400; padding: 0 0 18px;
       border-bottom: 1px solid var(--light); text-align: left;
     }
     .schedule-table th:not(:first-child) { text-align: center; }
     .schedule-table td { padding: 18px 0; border-bottom: 1px solid var(--light); font-size: 0.82rem; }
-    .schedule-table td:first-child { color: var(--sub); font-size: 0.75rem; letter-spacing: 0.06em; }
+    .schedule-table td:first-child { color: var(--sub); font-size: 0.78rem; letter-spacing: 0.06em; }
     .schedule-table td:not(:first-child) { text-align: center; }
-    .sched-tag { display: inline-block; padding: 4px 12px; background: var(--green); color: #fff; font-size: 0.65rem; letter-spacing: 0.06em; }
+    .sched-tag { display: inline-block; padding: 4px 12px; background: var(--green); color: #fff; font-size: 0.78rem; letter-spacing: 0.06em; }
     .sched-tag.group { background: transparent; border: 1px solid var(--light); color: var(--sub); }
     .schedule-note { margin-top: 22px; font-size: 0.75rem; color: var(--sub); line-height: 1.8; }
 
@@ -209,7 +218,7 @@
     .contact-left .section-title { margin-bottom: 44px; }
     .contact-list { display: flex; flex-direction: column; gap: 22px; }
     .contact-row { display: flex; gap: 24px; }
-    .contact-key { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); min-width: 60px; padding-top: 3px; }
+    .contact-key { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); min-width: 60px; padding-top: 3px; }
     .contact-val { font-size: 0.85rem; color: var(--sub); line-height: 1.8; }
     .contact-btns { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
     .btn-green {
@@ -226,8 +235,16 @@
       transition: background 0.2s; max-width: 240px;
     }
     .btn-kakao:hover { background: #f0d800; }
-    .contact-map { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: var(--light); }
-    .contact-map iframe { width: 100%; height: 100%; border: none; filter: grayscale(25%); }
+    .contact-map { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+    .map-frame { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: var(--light); }
+    .map-frame iframe { width: 100%; height: 100%; border: none; filter: grayscale(25%); }
+    .map-links { display: flex; gap: 10px; }
+    .map-links a {
+      flex: 1; text-align: center; padding: 13px 10px;
+      font-size: 0.78rem; letter-spacing: 0.04em; color: var(--sub);
+      border: 1px solid var(--light); transition: border-color 0.2s, color 0.2s;
+    }
+    .map-links a:hover { border-color: var(--green); color: var(--green); }
 
     /* FOOTER */
     footer {
@@ -236,9 +253,9 @@
       border-top: 1px solid rgba(255,255,255,0.05);
     }
     .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
-    .footer-copy { font-size: 0.65rem; color: rgba(255,255,255,0.2); letter-spacing: 0.06em; }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); letter-spacing: 0.06em; }
     .footer-sns { display: flex; gap: 20px; }
-    .footer-sns a { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); transition: color 0.2s; }
+    .footer-sns a { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.28); transition: color 0.2s; }
     .footer-sns a:hover { color: rgba(255,255,255,0.8); }
 
     /* FLOAT */
@@ -272,7 +289,7 @@
       .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
       .gallery-item.tall { grid-row: span 1; }
       #contact { grid-template-columns: 1fr; gap: 48px; padding: 72px 28px; }
-      .contact-map { aspect-ratio: 4/3; }
+      .map-frame { aspect-ratio: 4/3; }
       footer { flex-direction: column; gap: 20px; padding: 36px 28px; text-align: center; }
       .footer-sns { justify-content: center; }
     }
@@ -508,21 +525,32 @@
           </svg>
           카카오톡 예약
         </a>
-        <a href="tel:010-0000-0000" class="btn-green">전화 예약</a>
+        <a href="tel:010-0000-0000" class="btn-green">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.6 6.6l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1l-2.2 2.3z" fill="#fff"/>
+          </svg>
+          전화 예약
+        </a>
       </div>
     </div>
     <div class="contact-map">
-      <iframe
-        src="https://maps.google.com/maps?q=성수동&t=&z=15&ie=UTF8&iwloc=&output=embed"
-        allowfullscreen loading="lazy" title="Studio Verdure 위치"
-      ></iframe>
+      <div class="map-frame">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=127.0465,37.5385,127.0665,37.5505&amp;layer=mapnik&amp;marker=37.5445,127.0565"
+          loading="lazy" title="Studio Verdure 위치"
+        ></iframe>
+      </div>
+      <div class="map-links">
+        <a href="https://map.naver.com/p/search/성수동2가" target="_blank" rel="noopener">네이버 지도에서 보기</a>
+        <a href="https://map.kakao.com/?q=성수동2가" target="_blank" rel="noopener">카카오맵에서 보기</a>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Studio Verdure</div>
-    <p class="footer-copy">© 2025 Studio Verdure. All rights reserved.</p>
+    <p class="footer-copy">© 2026 Studio Verdure. All rights reserved.</p>
     <div class="footer-sns">
       <a href="#" target="_blank">Instagram</a>
       <a href="#" target="_blank">KakaoTalk</a>
