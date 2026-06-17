@@ -39,8 +39,7 @@
       transition: background 0.4s, padding 0.4s;
     }
     nav.scrolled {
-      background: rgba(247,245,242,0.95);
-      backdrop-filter: blur(8px);
+      background: rgba(247,245,242,0.98);
       padding: 18px 60px;
       border-bottom: 1px solid var(--light);
     }
@@ -84,7 +83,7 @@
 
     /* HERO */
     #hero {
-      position: relative; height: 100vh; min-height: 640px;
+      position: relative; height: 100vh; height: 100svh; min-height: 640px;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
     }
@@ -583,10 +582,20 @@
   <script>
     const nav = document.getElementById('nav');
     const floatBtn = document.getElementById('floatBtn');
+    let navTicking = false, navState = null;
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) { nav.classList.add('scrolled'); floatBtn.classList.add('visible'); }
-      else { nav.classList.remove('scrolled'); floatBtn.classList.remove('visible'); }
-    });
+      if (navTicking) return;
+      navTicking = true;
+      requestAnimationFrame(() => {
+        const s = window.scrollY > 80;
+        if (s !== navState) {
+          navState = s;
+          nav.classList.toggle('scrolled', s);
+          floatBtn.classList.toggle('visible', s);
+        }
+        navTicking = false;
+      });
+    }, { passive: true });
     function toggleMenu() {
       document.getElementById('hamburger').classList.toggle('open');
       document.getElementById('drawer').classList.toggle('open');
@@ -596,17 +605,20 @@
       document.getElementById('drawer').classList.remove('open');
     }
     const fadeEls = document.querySelectorAll('.intro-aside, .intro-text, .program-card, .about-img, .about-text, .gallery-item, .contact-left, .contact-map');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+    const enableFade = window.matchMedia('(min-width: 961px)').matches && 'IntersectionObserver' in window;
+    if (enableFade) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; io.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      fadeEls.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+        el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+        io.observe(el);
       });
-    }, { threshold: 0.08 });
-    fadeEls.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-      io.observe(el);
-    });
+    }
   </script>
 </body>
 </html>
