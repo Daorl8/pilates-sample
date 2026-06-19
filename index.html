@@ -119,7 +119,7 @@
       letter-spacing: 0.2em; margin-top: 18px; color: rgba(255,255,255,0.6);
     }
     .hero-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.3); margin: 32px auto; }
-    .hero-sub { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .hero-sub { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); text-shadow: 0 1px 4px rgba(0,0,0,0.45); }
     .hero-scroll {
       position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2;
@@ -630,5 +630,15 @@
       });
     }
   </script>
+<script>
+/* 푸터 진입 시 플로팅 CTA 숨김(겹침·중복 방지) */
+(function(){
+  var fb=document.getElementById("floatBtn"), ft=document.querySelector("footer");
+  if(!fb||!ft) return;
+  fb.style.transition="opacity .25s";
+  function chk(){ var r=ft.getBoundingClientRect(); if(r.top<innerHeight){ fb.style.opacity="0"; fb.style.pointerEvents="none"; } else { fb.style.opacity=""; fb.style.pointerEvents=""; } }
+  window.addEventListener("scroll",chk,{passive:true}); window.addEventListener("resize",chk); chk();
+})();
+</script>
 </body>
 </html>
